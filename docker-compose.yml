@@ -1,0 +1,48 @@
+# AgroSmart: simulador de sensor -> pipeline -> saídas + logs/status
+#
+#   docker compose up --build -d                          sobe o imulador + pipeline
+#   docker compose ps                                     mostra o estado (healthy/unhealthy)
+#   docker compose logs -f pipeline                       acompanha o log em tempo real
+#   docker compose --profile analise run --rm mineracao   gera a análise de processo
+#   docker compose down                                   desliga
+
+services:
+  simulador:
+    build: .
+    image: agrosmart:latest
+    command: ["python", "-m", "agrosmart.simulador"]
+    environment:
+      SIM_INTERVALO: ${SIM_INTERVALO:-2}
+      SIM_FALHAS: ${SIM_FALHAS:-0.05}
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-m", "agrosmart.healthcheck", "simulador"]
+      interval: 15s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
+  pipeline:
+    build: .
+    image: agrosmart:latest
+    command: ["python", "-m", "agrosmart.pipeline"]
+    environment:
+      CICLO_S: ${CICLO_S:-30}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    depends_on:
+      simulador:
+        condition: service_started
+    restart: unless-stopped
+
+  mineracao:
+    image: agrosmart:latest
+    profiles: ["analise"]
+    command: ["python", "-m", "agrosmart.mineracao"]
+    volumes:
+      - ./logs:/app/logs:ro
+      - ./relatorios:/app/relatorios
+

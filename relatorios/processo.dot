@@ -1,0 +1,23 @@
+digraph AgroSmart {
+  rankdir=TB; bgcolor="white"; nodesep=0.4; ranksep=0.5;
+  node [shape=box, style="rounded,filled", fillcolor="#E8F0FE", color="#4A6FA5", fontname="Helvetica", fontsize=11];
+  edge [fontname="Helvetica", fontsize=9, color="#555555"];
+  "Leitura coletada" [label="Leitura coletada\n(n=2929)", fillcolor="#E8F0FE"];
+  "Leitura recebida" [label="Leitura recebida\n(n=2964)", fillcolor="#E8F0FE"];
+  "Leitura validada" [label="Leitura validada\n(n=2814)", fillcolor="#E8F0FE"];
+  "Leitura rejeitada" [label="Leitura rejeitada\n(n=150)", fillcolor="#F8D7DA"];
+  "Leitura transformada" [label="Leitura transformada\n(n=2814)", fillcolor="#E8F0FE"];
+  "Risco classificado" [label="Risco classificado\n(n=2814)", fillcolor="#E8F0FE"];
+  "Alerta emitido" [label="Alerta emitido\n(n=1087)", fillcolor="#FFE8B3"];
+  "Saídas publicadas" [label="Saídas publicadas\n(n=2814)", fillcolor="#D4EDDA"];
+  "Rejeição registrada" [label="Rejeição registrada\n(n=150)", fillcolor="#F8D7DA"];
+  "Leitura coletada" -> "Leitura recebida" [label="2929x | média 15.6 s", penwidth=5.0];
+  "Leitura recebida" -> "Leitura validada" [label="2814x | média <1 ms", penwidth=4.8];
+  "Leitura validada" -> "Leitura transformada" [label="2814x | média <1 ms", penwidth=4.8];
+  "Leitura transformada" -> "Risco classificado" [label="2814x | média <1 ms", penwidth=4.8];
+  "Risco classificado" -> "Saídas publicadas" [label="1727x | média 94 ms", penwidth=3.4];
+  "Risco classificado" -> "Alerta emitido" [label="1087x | média <1 ms", penwidth=2.5];
+  "Alerta emitido" -> "Saídas publicadas" [label="1087x | média 95 ms", penwidth=2.5];
+  "Leitura recebida" -> "Leitura rejeitada" [label="150x | média <1 ms", penwidth=1.2];
+  "Leitura rejeitada" -> "Rejeição registrada" [label="150x | média 97 ms", penwidth=1.2];
+}

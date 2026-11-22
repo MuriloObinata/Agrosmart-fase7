@@ -1,0 +1,14 @@
+.venv
+.git
+.github
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+data/raw/*.jsonl
+data/trusted/*
+data/refined/*
+logs/*
+relatorios/*
+docs
+tests

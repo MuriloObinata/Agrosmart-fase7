@@ -1,0 +1,25 @@
+{
+  "casos": 2964,
+  "eventos": 18536,
+  "variantes": 4,
+  "periodo_inicio": "2026-11-22 01:33:13",
+  "periodo_fim": "2026-11-22 03:11:16.624000",
+  "lead_time_medio_s": 15.521,
+  "lead_time_p95_s": 29.235,
+  "gargalo": "Leitura coletada -> Leitura recebida",
+  "gargalo_media_s": 15.61,
+  "gargalo_parcela_pct": 99.4,
+  "rejeicao_pct": 5.1,
+  "motivos_rejeicao": {
+    "campo nulo ou ausente": 58,
+    "JSON inválido": 35,
+    "valor fora da faixa (sensor suspeito)": 30,
+    "registro duplicado": 27
+  },
+  "niveis_risco": {
+    "NORMAL": 1727,
+    "ATENÇÃO": 987,
+    "CRÍTICO": 100
+  },
+  "alertas": 1087
+}

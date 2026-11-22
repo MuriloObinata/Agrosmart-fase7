@@ -1,0 +1,10 @@
+origem,destino,frequencia,media_s,mediana_s,p95_s,max_s,total_s
+Leitura coletada,Leitura recebida,2929,15.6101,15.678,29.1816,31.128,45721.858
+Leitura recebida,Leitura validada,2814,0.0,0.0,0.0,0.001,0.134
+Leitura validada,Leitura transformada,2814,0.0,0.0,0.0,0.001,0.018
+Leitura transformada,Risco classificado,2814,0.0,0.0,0.0,0.001,0.015
+Risco classificado,Saídas publicadas,1727,0.0944,0.096,0.152,0.241,163.045
+Risco classificado,Alerta emitido,1087,0.0,0.0,0.0,0.0,0.0
+Alerta emitido,Saídas publicadas,1087,0.0952,0.097,0.15,0.241,103.466
+Leitura recebida,Leitura rejeitada,150,0.0,0.0,0.0,0.001,0.003
+Leitura rejeitada,Rejeição registrada,150,0.0972,0.103,0.1557,0.237,14.58
