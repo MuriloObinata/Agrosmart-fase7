@@ -40,7 +40,7 @@ def carregar_tracos(eventos):
     eventos["ordem"] = eventos["atividade"].map(ORDEM.index)
     eventos = eventos.sort_values(["case_id", "timestamp", "ordem"], kind="stable")
     return {
-        caso: list(zip(g["atividade"], g["timestamp"], g["resultado"].fillna("")))
+        caso: list(zip(g["atividade"], g["timestamp"], g["resultado"].fillna(""), strict=True))
         for caso, g in eventos.groupby("case_id", sort=False)
     }
 
