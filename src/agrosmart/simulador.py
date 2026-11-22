@@ -1,7 +1,9 @@
-"""Simulador de sensor: grava uma leitura JSON em data/raw/sensor_stream.jsonl.
-Imita o sensor do TinkerCad com dados sobre temperatura, umidade do solo e luminosidade.
-injeta falhas propositais como JSON quebrados, outliers, campo ausentes, nulo e duplicados para que a validação da pipeline tenha o que rejeitar."""
+"""Simulador de sensor: grava uma leitura JSON a cada N segundos em data/raw/sensor_stream.jsonl.
 
+Imita o sensor do TinkerCad e, de vez em quando,
+injeta falhas propositais como JSON quebrado, outlier, campo ausente, nulo, duplicado para que a
+validação do pipeline tenha o que rejeitar.
+"""
 import argparse
 import json
 import math
